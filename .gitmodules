@@ -1,0 +1,6 @@
+[submodule "plugins/AclExtras"]
+	path = plugins/AclExtras
+	url = https://github.com/markstory/acl_extras.git
+[submodule "plugins/Search"]
+	path = plugins/Search
+	url = https://github.com/CakeDC/search.git
