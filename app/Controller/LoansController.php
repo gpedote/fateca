@@ -30,13 +30,6 @@ class LoansController extends AppController {
 	public $helpers = array('Js' => array('Jquery'));
 
 /**
- * Components
- *
- * @var array
- */
-	public $components = array('Cart');
-
-/**
  * index method
  *
  * @return void
@@ -84,7 +77,6 @@ class LoansController extends AppController {
 			}
 		}
 		$person = $this->Person->find('first', $options);
-		$books = $this->Loan->Book->find('list');
 
 		$this->Session->write('Person', $person);
 
@@ -153,7 +145,6 @@ class LoansController extends AppController {
  */
 	public function add_cart() {
 		if ($this->request->is('ajax')) {
-			$this->layout = 'ajax';
 			if (!isset($this->request->data['Book']['id'])) {
 				throw new NotFoundException(__('Invalid book'));
 			}
@@ -179,7 +170,7 @@ class LoansController extends AppController {
 			}
 
 			$this->set(array('loans' => $this->Session->read('Loan')));
-			$this->render('cart');
+			$this->render('/Elements/Loans/cart', 'ajax');
         }
     }
 /**
@@ -204,7 +195,13 @@ class LoansController extends AppController {
 	}
 
     public function cart() {
-        $shop = $this->Session->read('Shop');
-        $this->set(compact('shop'));
+    	if (empty($this->request->params['requested'])) {
+            throw new ForbiddenException();
+        }
+        if ($this->Session->check('Loan')) {
+        	return $this->Session->read('Loan');
+    	} else {
+    		return array();
+    	}
     }
 }

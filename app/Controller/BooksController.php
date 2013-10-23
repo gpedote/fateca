@@ -156,22 +156,32 @@ class BooksController extends AppController {
 /**
  * Loan method
  *
+ * @throws MethodNotAllowedException
  * @return void
  */
     public function loan() {
-        if ($this->request->is('ajax')) {
-            $this->Prg->commonProcess('Book');
-            $searchConditions = array(
-                'findType' => 'bookIsbns',
-                'conditions' => $this->Book->parseCriteria($this->Prg->parsedParams()),
-            );
-            $this->Paginator->settings = am($this->paginate, $searchConditions);
-            $this->set('books', $this->paginate());
-            $this->render('loan', 'ajax');
+        if (empty($this->request->params['requested']) && !$this->request->is('ajax')) {
+            throw new MethodNotAllowedException();
         }
         $this->Book->recursive = 0;
-        $this->paginate = array('findType' => 'bookIsbns');
+        $this->Prg->commonProcess('Book');
+        $searchConditions = array(
+            'findType' => 'bookIsbns',
+            'conditions' => $this->Book->parseCriteria($this->Prg->parsedParams()),
+        );
+        $this->Paginator->settings = am($this->paginate, $searchConditions);
+
+        // sort by type
+        $this->Book->virtualFields = array(
+             'type' => 'type',
+         );
+        
+        //requested action
+        if (!$this->request->is('ajax')) {
+            return array('books' => $this->paginate(), 'paging' => $this->params['paging']);
+        }
         $this->set('books', $this->paginate());
+        $this->render('/Elements/Books/books_loan', 'ajax');
     }
 
 }
