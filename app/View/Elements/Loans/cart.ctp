@@ -24,7 +24,7 @@
             </td>
             <td>        
                 <?php echo $this->Form->create(null, array()); ?>
-                <?php echo $this->Form->input('id', array('type' => 'hidden', 'value' => $loan['Book']['id'])); ?>
+                <?php echo $this->Form->input('id', array('name' => 'data[Book][id]', 'type' => 'hidden', 'value' => $loan['Book']['id'])); ?>
                 <?php echo $this->Form->button(__('Remove'), array('class' => 'rm btn btn-primary btn-xs', 'id' => $loan['Book']['id']));?>
                 <?php echo $this->Form->end(); ?>
             </td>

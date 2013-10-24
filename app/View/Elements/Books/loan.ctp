@@ -54,8 +54,8 @@
             <?php echo $this->Html->link($book['Types']['type'], array('controller' => 'types', 'action' => 'view', $book['Types']['id'])); ?>
         </td>
         <td>        
-            <?php echo $this->Form->create(null, array()); ?>
-            <?php echo $this->Form->input('id', array('type' => 'hidden', 'value' => $book['Book']['id'])); ?>
+            <?php echo $this->Form->create(null, array('role' => 'form')); ?>
+            <?php echo $this->Form->input('id', array('name' => 'data[Book][id]', 'type' => 'hidden', 'value' => $book['Book']['id'])); ?>
             <?php echo $this->Form->button(__('Add'), array('class' => 'add btn btn-primary btn-xs', 'id' => $book['Book']['id']));?>
             <?php echo $this->Form->end(); ?>
         </td>

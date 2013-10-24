@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#books-index").on('click','.add', function() {
+    $("#cart-index").on('click','.rm', function() {
         $.ajax({
             async:true, 
             beforeSend:function (XMLHttpRequest) {
@@ -14,7 +14,7 @@ $(document).ready(function () {
                 $("#cart-index").html(data);
             }, 
             type:"POST", 
-            url:"\/loans\/addCart"
+            url:"\/loans\/removeCart"
         });
         return false;
     });

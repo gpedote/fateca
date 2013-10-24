@@ -163,7 +163,6 @@ class BooksController extends AppController {
         if (empty($this->request->params['requested']) && !$this->request->is('ajax')) {
             throw new MethodNotAllowedException();
         }
-        $this->Book->recursive = 0;
         $this->Prg->commonProcess('Book');
         $searchConditions = array(
             'findType' => 'bookIsbns',

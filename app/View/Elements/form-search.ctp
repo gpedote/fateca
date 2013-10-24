@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-sm-8 col-md-6 col-lg-4">
         <?php
             echo $this->Form->create($title, array(
                 'url' => array_merge($submitPath, $this->params['pass']), 
