@@ -137,13 +137,13 @@ class LoansController extends AppController {
 	}
 
 /**
- * add_cart method
+ * addCart method
  *
  * @throws NotFoundException
  * @throws MethodNotAllowedException
  * @return void
  */
-	public function add_cart() {
+	public function addCart() {
 		if ($this->request->is('ajax')) {
 			if (!isset($this->request->data['Book']['id'])) {
 				throw new NotFoundException(__('Invalid book'));
@@ -173,27 +173,51 @@ class LoansController extends AppController {
 			$this->render('/Elements/Loans/cart', 'ajax');
         }
     }
+
 /**
- * delete_cart method
+ * removeCart method
  *
  * @throws NotFoundException
  * @throws MethodNotAllowedException
  * @return void
  */
-    public function delete_cart($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
+    public function removeCart() {
+		if ($this->request->is('ajax')) {
+			if (!isset($this->request->data['Book']['id'])) {
+				throw new NotFoundException(__('Invalid book'));
+			}
+			$id = $this->request->data['Book']['id'];
+			if (!$this->Book->exists($id)) {
+				throw new NotFoundException(__('Invalid book'));
+			}
+			if (!$this->Session->check('Person')) {
+				throw new NotFoundException(__('Invalid person'));
+			}
+
+			$book = $this->Book->findById($id);
+
+			if ($this->Session->check('Loan')) {
+				if ($this->Session->check('Loan.' . $id)) {
+					$this->Session->delete('Loan.' . $id);
+	            	$this->Session->setFlash($book['Book']['title'] . ' was removed of your shopping cart.', 'flash/success');
+				} else {
+					$this->Session->setFlash(__('This item was not found'), 'flash/error');
+				}
+			} else {
+				$this->Session->setFlash(__('This item was not found'), 'flash/error');
+			}
+
+			$this->set(array('loans' => $this->Session->read('Loan')));
+			$this->render('/Elements/Loans/cart', 'ajax');
 		}
-		if (!$this->Book->exists($id)) {
-			throw new NotFoundException(__('Invalid Book'));
-		}
-        $book = $this->Cart->remove($id);
-        if(!empty($book)) {
-                $this->Session->setFlash($book['Book']['title'] . ' was removed from your shopping cart', 'flash/success');
-        }
-        $this->redirect(array('action' => 'cart'));
 	}
 
+/**
+ * cart method
+ *
+ * @throws ForbiddenException
+ * @return void
+ */
     public function cart() {
     	if (empty($this->request->params['requested'])) {
             throw new ForbiddenException();
@@ -203,5 +227,19 @@ class LoansController extends AppController {
     	} else {
     		return array();
     	}
+    }
+
+/**
+ * clearCart method
+ *
+ * @return void
+ */
+    public function clearCart() {
+		if ($this->Session->check('Loan')) {
+	        $this->Session->delete('Loan');
+	        $this->Session->setFlash(__('Cart is empty now'), 'flash/success');
+        } else {
+			$this->Session->setFlash(__('Cart allready empty'), 'flash/error');
+        }
     }
 }
