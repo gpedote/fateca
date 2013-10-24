@@ -7,19 +7,19 @@
     );
 
     if (!isset($books)) {
-        $data = $this->requestAction(array('controller' => 'Books', 'action' => 'loan'));
+        $data = $this->requestAction(array('controller' => 'books', 'action' => 'loan'));
         if(!isset($this->params['paging'])) {
             $this->params['paging'] = array();
         }
         $this->params['paging'] = array_merge( $this->params['paging'] , $data['paging'] );
         $books = $data['books'];
-        $options['url'] =  array('controller'=>'Books', 'action'=>'loan');
+        $options['url'] =  array('controller'=>'books', 'action'=>'loan');
     }
 
     $this->Paginator->options($options);
 ?>
 <?php if (!$this->request['isAjax']): ?>
-    <div class="loans form">
+    <div class="books form">
         <?php 
             echo $this->element('form-search', array(
                     'title' => 'Book', 
@@ -39,15 +39,9 @@
         <table cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <?php if (isset($books)): ?>
-                            <th><?php echo $this->Paginator->sort('title', 'Book'); ?></th>
-                            <th><?php echo $this->Paginator->sort('type', 'Types'); ?></th>
-                            <th class="actions"><?php echo __('Actions'); ?></th>
-                    <?php else: ?>
-                        <th class="actions"><?php echo __('Book'); ?></th>
-                        <th class="actions"><?php echo __('Types'); ?></th>
-                        <th class="actions"><?php echo __('Actions'); ?></th>
-                    <?php endif; ?>
+                    <th><?php echo $this->Paginator->sort('title', 'Book'); ?></th>
+                    <th><?php echo $this->Paginator->sort('type', 'Types'); ?></th>
+                    <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>
             </thead>
             <tbody id="books-table-body">

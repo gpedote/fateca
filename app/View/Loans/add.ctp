@@ -10,7 +10,7 @@
 			<?php echo $this->element('Loans/cart');  ?>
 		</div>
 
-		<?php echo $this->element('Books/books_loan'); ?>
+		<?php echo $this->element('Books/loan'); ?>
 
 		<?php			
 			$this->Js->set('maxAdd', 2);

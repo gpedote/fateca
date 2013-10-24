@@ -190,24 +190,31 @@ class PeopleController extends AppController {
 /**
  * Loan method
  *
+ * @throws MethodNotAllowedException
  * @return void
  */
     public function loan() {
-        if ($this->request->is('ajax')) {
-            $this->Prg->commonProcess('Person');
-            $searchConditions = array(
-                'findType' => 'loansNumber',
-                'conditions' => $this->Person->parseCriteria($this->Prg->parsedParams()),
-            );
-            $this->Paginator->settings = am($this->paginate, $searchConditions);
-            $this->set('people', $this->paginate());
-            $this->render('loan', 'ajax');
+        if (empty($this->request->params['requested']) && !$this->request->is('ajax')) {
+            throw new MethodNotAllowedException();
         }
-        $this->Person->recursive = 0;
-        $this->paginate = array('findType' => 'loansNumber');
-        $this->set('people', $this->paginate());
-    }
+        $this->Prg->commonProcess('Person');
+        $searchConditions = array(
+            'findType' => 'loansNumber',
+            'conditions' => $this->Person->parseCriteria($this->Prg->parsedParams()),
+        );
+        $this->Paginator->settings = am($this->paginate, $searchConditions);
 
+        $this->Person->virtualFields = array(
+             'loans' => 'loans',
+         );
+
+        //requested action
+        if (!$this->request->is('ajax')) {
+            return array('people' => $this->paginate(), 'paging' => $this->params['paging']);
+        }
+        $this->set('people', $this->paginate());
+        $this->render('/Elements/People/loan', 'ajax');
+    }
 
 /**
  * Users index method (people with username/passwords)

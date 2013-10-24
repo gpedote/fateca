@@ -17,8 +17,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php
-						foreach ($loans as $loan): ?>
+<?php foreach ($loans as $loan): ?>
 	<tr>
 		<td>
 			<?php echo $this->Html->link($loan['Person']['name'], array('controller' => 'people', 'action' => 'view', $loan['Person']['id'])); ?>
@@ -54,33 +53,7 @@
 			
 		</div><!-- /.index -->
 
-	<?php 
-		echo $this->element('form-search', array(
-				'title' => 'Person', 
-				'submitPath' => array(
-			        'controller' => 'people', 
-			        'action' => 'loan',
-			    ), 
-	    		'formId' => 'PersonFindForm',
-	    		'inputId' => 'PersonFind',
-			)
-		);
-	?>
-
-		
-	<div id="people-index" class="people index"></div>
-	<?php
-		echo $this->element('form-search-js', array(
-			    'update' => '#people-index',
-			    'submitPath' => array(
-			        'controller' => 'people', 
-			        'action' => 'loan',
-			    ), 
-			    'formId' => '#PersonFindForm',
-			    'inputId' => '#PersonFind',
-			)
-		);
-	?>
+		<?php echo $this->element('People/loan'); ?>
 
 	</div><!-- /#page-content .col-sm-12 -->
 

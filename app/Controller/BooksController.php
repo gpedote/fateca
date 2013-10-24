@@ -170,8 +170,6 @@ class BooksController extends AppController {
             'conditions' => $this->Book->parseCriteria($this->Prg->parsedParams()),
         );
         $this->Paginator->settings = am($this->paginate, $searchConditions);
-
-        // sort by type
         $this->Book->virtualFields = array(
              'type' => 'type',
          );
@@ -181,7 +179,7 @@ class BooksController extends AppController {
             return array('books' => $this->paginate(), 'paging' => $this->params['paging']);
         }
         $this->set('books', $this->paginate());
-        $this->render('/Elements/Books/books_loan', 'ajax');
+        $this->render('/Elements/Books/loan', 'ajax');
     }
 
 }
