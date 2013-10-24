@@ -206,17 +206,18 @@ class Person extends AppModel {
     }
 
 /**
- * SELECT people.name, people.id, Count(loans.id) FROM `people` left join loans on loans.person_id = people.id WHERE isnull(loans.returned) group by people.id
  * Loans Number of a Person (not returned to collection)
  */
     protected function _findLoansNumber($state, $query, $results = array()) {
         if ($state === 'before') {
             $fields = array(
                 'Person.ra', 'Person.name', 'Group.id', 
-                'Group.name', 'COUNT(Loan.id) AS Loans'
-            );
-            $conditions = array(
-                'AND' => array('ISNULL(Loan.returned)')
+                'Group.name', 
+                '(SUM(CASE 
+                    WHEN ISNULL(Loan.returned) OR Loan.payed < Loan.fine 
+                    THEN (CASE WHEN NOT ISNULL(Loan.id) THEN 1 ELSE 0 END) 
+                    ELSE 0 
+                END)) AS Loans'
             );
             $joins = array(
                 array(
@@ -235,31 +236,18 @@ class Person extends AppModel {
                 $query['fields'] = $fields;
             }
 
-            if (count($query['conditions'])) {
-                $query['conditions'] = am($query['conditions'], $conditions);
-            } else {
-                $query['conditions'] = $conditions;
-            }
-            
             if (count($query['joins'])) {
                 $query['joins'] = am($query['joins'], $joins);
             } else {
                 $query['joins'] = $joins;
             }
-            
+
             if (count($query['group'])) {
                 $query['group'] = am($query['group'], $group);
             } else {
                 $query['group'] = $group;
             }
-                
             return $query;
-        } elseif ($state === 'after') {
-            if (isset($query['sort']) && isset($query['direction'])) {
-                return Set::sort($results, '{n}.Person.' . $query['sort'], $query['direction']);
-            } else {
-                return Set::sort($results, '{n}.Person.name', 'asc');
-            }
         }
         return $results;
     }
