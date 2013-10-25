@@ -16,7 +16,8 @@ Feel free to contribute and free to use.
 Follow [Cake Installation](http://book.cakephp.org/2.0/en/installation.html) steps.
 
 ### Step 4 ###
-Goto app folder and execute:
+Ensure that you have a connection with your database then go to app folder and execute:
+
 	./Console/cake schema create
 
 ## Contributing ##
@@ -28,7 +29,7 @@ If you are unable to fix the issue, create a ticket and we'll see what happens f
 ## Requirements ##
 
 * PHP version: PHP 5.2+
-* CakePHP version: Cakephp 2.2
+* CakePHP version: Cakephp 2.4+
 * [CakeDC Search plugin](http://github.com/CakeDC/search) - Already submodule
 * [MarkStory AclExtras plugin](https://github.com/markstory/acl_extras) - Already submodule
 
