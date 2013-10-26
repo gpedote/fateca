@@ -16,7 +16,6 @@
 			$this->Js->set('maxAdd', 2);
 			echo $this->Js->writeBuffer();
 			$this->Html->script('Loans/add', array('block' => 'scriptBottom'));
-			$this->Html->script('Loans/remove', array('block' => 'scriptBottom'));
 		?>
 
 	</div><!-- /#page-content .col-sm-12 -->

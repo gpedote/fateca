@@ -230,16 +230,17 @@ class LoansController extends AppController {
     }
 
 /**
- * clearCart method
+ * cleanCart method
  *
  * @return void
  */
-    public function clearCart() {
+    public function cleanCart() {
 		if ($this->Session->check('Loan')) {
 	        $this->Session->delete('Loan');
 	        $this->Session->setFlash(__('Cart is empty now'), 'flash/success');
         } else {
 			$this->Session->setFlash(__('Cart allready empty'), 'flash/error');
         }
+        $this->render('/Elements/Loans/cart', 'ajax');
     }
 }
