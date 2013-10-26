@@ -40,8 +40,8 @@
             <thead>
                 <tr>
                     <th><?php echo $this->Paginator->sort('ra'); ?></th>
-                    <th><?php echo $this->Paginator->sort('person_id'); ?></th>
-                    <th><?php echo $this->Paginator->sort('group_id'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Person.name'); ?></th>
+                    <th><?php echo $this->Paginator->sort('Group.name'); ?></th>
                     <th><?php echo $this->Paginator->sort('loans'); ?></th>
                     <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>

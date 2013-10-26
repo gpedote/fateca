@@ -53,8 +53,6 @@
 			
 		</div><!-- /.index -->
 
-		<?php echo $this->element('People/loan'); ?>
-
 	</div><!-- /#page-content .col-sm-12 -->
 
 </div><!-- /#page-container .row-fluid -->

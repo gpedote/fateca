@@ -5,7 +5,7 @@
                 'home/books_s.jpg', 
                 array(
                     'alt' => __('Copies'),
-                    'url' => array('controller' => 'loans', 'action' => 'index'),
+                    'url' => array('controller' => 'books', 'action' => 'index'),
                     'class' => array('img-responsive', 'img-rounded'),
                 )
             );
@@ -19,7 +19,7 @@
                 'home/dev_s.jpg', 
                 array(
                     'alt' => __('Devolution'),
-                    'url' => array('controller' => 'loans', 'action' => 'index'),
+                    'url' => array('controller' => 'loans', 'action' => 'devolution'),
                     'class' => array('img-responsive', 'img-rounded'),
                 )
             );

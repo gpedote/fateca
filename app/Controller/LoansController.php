@@ -30,11 +30,11 @@ class LoansController extends AppController {
 	public $helpers = array('Js' => array('Jquery'));
 
 /**
- * index method
+ * devolution method
  *
  * @return void
  */
-	public function index() {
+	public function devolution() {
 		$this->Loan->recursive = 0;
 		$this->Paginator->settings = am($this->paginate, array('findType' => 'currentLoans'));
 		$this->set('loans', $this->paginate());
@@ -135,6 +135,12 @@ class LoansController extends AppController {
 		$this->Session->setFlash(__('Loan was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
 	}
+
+/**
+ * initLoan method
+ * @return void
+ */
+	public function initLoan() {}
 
 /**
  * addCart method
