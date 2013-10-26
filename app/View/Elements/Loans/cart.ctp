@@ -3,7 +3,6 @@
         $loans = $this->requestAction('/loans/cart');
     }
 ?>
-
 <div class="table-responsive">
     <table cellpadding="0" cellspacing="0" class="table table-striped table-bordered">
         <thead>
@@ -33,3 +32,15 @@
         </tbody>
     </table>
 </div><!-- /.table-responsive -->
+<div id="buttons">
+
+    <?php echo $this->Form->create('Loan', array('action' => 'add', 'class' => 'form-inline',
+                'role' => 'form')); ?>
+    <?php foreach ($loans as $loan): ?>
+        <?php echo $this->Form->input('id', array('name' => 'data[Book][id]', 'type' => 'hidden', 'value' => $loan['Book']['id'])); ?>
+    <?php endforeach; ?>
+    <?php echo $this->Form->button(__('Clean'), array('type' => 'reset', 'class' => 'clean btn btn-danger'));?>
+    <?php echo $this->Form->button(__('Save'), array('class' => 'btn btn-success'));?>
+    <?php echo $this->Form->end(); ?>
+</div>
+<hr/>
