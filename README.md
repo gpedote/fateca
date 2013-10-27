@@ -1,11 +1,11 @@
-# FATECA #
+# FATECA
 ------------------------------------------
 
 FATECA is a library collection manager build uppon [CakePHP](http://www.cakephp.org) and based on the needs of [Fatec Itapetininga](http://fatecitapetininga.edu.br).
 
 Feel free to contribute and free to use.
 
-## Installation ##
+## Installation
 ------------------------------------------
 
 ### Step 1 ###
@@ -22,14 +22,14 @@ Ensure that you have a connection with your database then go to app folder and e
 
 	./Console/cake schema create
 
-## Contributing ##
+## Contributing
 ------------------------------------------
 
 If you would like to contribute, clone the source on GitHub, make your changes and send me a pull request.
 If you are unable to fix the issue, create a ticket and we'll see what happens from there.
 
 
-## Requirements ##
+## Requirements
 ------------------------------------------
 
 * PHP version: PHP 5.2+
@@ -37,7 +37,7 @@ If you are unable to fix the issue, create a ticket and we'll see what happens f
 * [CakeDC Search plugin](http://github.com/CakeDC/search) - Already submodule
 * [MarkStory AclExtras plugin](https://github.com/markstory/acl_extras) - Already submodule
 
-## License ##
+## License
 ------------------------------------------
 
 MIT License, see [LICENSE.txt](LICENSE.txt)
