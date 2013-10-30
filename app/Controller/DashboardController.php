@@ -43,6 +43,6 @@ class DashboardController extends AppController {
 				}
 			}
 		}
-		$this->render('index');
+		$this->redirect($this->referer());
 	}
 }
