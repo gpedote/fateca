@@ -23,10 +23,19 @@ class DashboardController extends AppController {
  */
 	public $uses = array();
 
-
+/**
+ * index method
+ *
+ * @return void
+ */
 	public function index() {
 	}
 
+/**
+ * database method
+ *
+ * @return void
+ */
 	public function database() {
 		if (isset($this->request->params['pass'][0])) {
 			if ($this->request->params['pass'][0] == 'aco') {

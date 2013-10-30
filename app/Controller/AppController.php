@@ -71,13 +71,25 @@ class AppController extends Controller {
 
     public $paginate = array('limit' => 10);
 
+/**
+ * beforeRender method
+ *
+ * @return void
+ */
     public function beforeRender() {
+        parent::beforeRender();
         if ($this->Auth->user()['username'] !== '') {
             $this->set('authUser', $this->Auth->user()['username']);
         }
     }
 
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
     public function beforeFilter() {
+        parent::beforeFilter();
         // Disable cake for secure logout
         if ($this->action === 'logout') {
             $this->response->disableCache();

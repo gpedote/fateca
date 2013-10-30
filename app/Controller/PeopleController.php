@@ -160,6 +160,11 @@ class PeopleController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
+/**
+ * login method
+ *
+ * @return void
+ */
 	public function login() {
         $this->layout = 'login';
         /* Strange thing is Auth.User not Auth.Person*/
@@ -175,6 +180,11 @@ class PeopleController extends AppController {
 	    }
 	}
 
+/**
+ * logout method
+ *
+ * @return void
+ */
 	public function logout() {
         $this->layout = 'login';
 		$this->Auth->logout();
@@ -183,7 +193,13 @@ class PeopleController extends AppController {
 		$this->redirect(array('action'=>'login'));
 	}
 
-    public function beforeFilter() {        
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
+    public function beforeFilter() {
+        parent::beforeFilter();
         $this->Auth->allow('login','logout');
     }
 
@@ -230,6 +246,7 @@ class PeopleController extends AppController {
  * Users permission method (people with username/passwords)
  * Need to be improved, looks a mess
  * @from https://github.com/rsmartin/NiceAuth
+ * @throws NotFoundException
  * @return void
  */
     public function user_permissions($id = null) {
@@ -294,11 +311,8 @@ class PeopleController extends AppController {
                         }
                         $i++;
                     }
-
                 }
-
             }
-
         }  
         $this->set(compact('perms', 'person'));
     }
