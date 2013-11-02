@@ -12,7 +12,7 @@ Feel free to contribute and free to use.
 
 **Step 1**
 
-	git clone https://github.com/gpedote/fateca.git
+	git clone --recursive https://github.com/gpedote/fateca.git
 
 **Step 2**
 
