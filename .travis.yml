@@ -27,7 +27,7 @@ before_script:
     }" > ./app/Config/database.php
  
 script:
-  - sh -c "./app/Console/cake test app AllTests --stderr"
+  - sh -c "./lib/Cake/Console/cake test app AllTests --stderr"
 
 notifications:
 email: false
