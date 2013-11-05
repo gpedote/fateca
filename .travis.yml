@@ -8,6 +8,7 @@ before_script:
   - sh -c "mysql -e 'CREATE DATABASE fateca_test;'"
   - mkdir ./app/tmp
   - chmod -R 777 ./app/tmp
+  - chmod -777 ./app/Console/cake*
   - echo "<?php
     class DATABASE_CONFIG {
     public \$default = array(
@@ -27,7 +28,7 @@ before_script:
     }" > ./app/Config/database.php
  
 script:
-  - sh -c "./lib/Cake/Console/cake test app AllTests --stderr"
+  - sh -c "./app/Console/cake test app AllTests --stderr"
 
 notifications:
 email: false
