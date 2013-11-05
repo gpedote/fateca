@@ -12,7 +12,7 @@ Feel free to contribute and free to use.
 
 **Step 1**
 
-	git clone https://github.com/gpedote/fateca.git
+	git clone --recursive https://github.com/gpedote/fateca.git
 
 **Step 2**
 
@@ -37,11 +37,13 @@ If you are unable to fix the issue, create a ticket and we'll see what happens f
 ### Requirements
 ------------------------------------------
 
-* [XAMPP](http://www.apachefriends.org/en/xampp.html) **It isn't a requirement, but strongly recommended**
-* PHP version: PHP 5.2+
-* CakePHP version: Cakephp 2.4+
+* [XAMPP](http://www.apachefriends.org/en/xampp.html) - **It isn't a requirement, but strongly recommended**
+* [PHP 5.2+](http://php.net/)
+* [MySQL 5.6+](http://www.mysql.com/)
+* [CakePHP 2.4+](http://www.cakephp.org) - lib folder
 * [CakeDC Search plugin](http://github.com/CakeDC/search) - Submodule
 * [MarkStory AclExtras plugin](https://github.com/markstory/acl_extras) - Submodule
+* [CakeStrap Theme](https://github.com/Rhym/cakeStrap) - Integrated on code
 
 ### License
 ------------------------------------------
