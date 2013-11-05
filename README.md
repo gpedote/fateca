@@ -7,6 +7,8 @@ FATECA is a library collection manager build uppon [CakePHP](http://www.cakephp.
 
 Feel free to contribute and free to use.
 
+**Build Status:** [![Build Status](https://travis-ci.org/gpedote/fateca.png?branch=master)](https://travis-ci.org/gpedote/fateca)
+
 ### Installation
 ------------------------------------------
 
@@ -50,4 +52,4 @@ If you are unable to fix the issue, create a ticket and we'll see what happens f
 
 MIT License, see [LICENSE.txt](LICENSE.txt)
 
-![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)
+[![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)](http://www.cakephp.org)
