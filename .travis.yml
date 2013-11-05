@@ -22,7 +22,7 @@ before_script:
       'datasource' => 'Database/Mysql',
       'database' => 'fateca_test',
       'host' => '0.0.0.0',
-      'login' => 'travis'
+      'login' => 'travis',
       'persistent' => false,
     );
     }" > ./app/Config/database.php
