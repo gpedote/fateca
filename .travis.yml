@@ -6,6 +6,7 @@ php:
 before_script:
   - sh -c "mysql -e 'CREATE DATABASE fateca;'"
   - sh -c "mysql -e 'CREATE DATABASE fateca_test;'"
+  - mkdir ./app/tmp
   - chmod -R 777 ./app/tmp
   - echo "<?php
     class DATABASE_CONFIG {
