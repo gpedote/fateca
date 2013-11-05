@@ -8,7 +8,7 @@ before_script:
   - sh -c "mysql -e 'CREATE DATABASE fateca_test;'"
   - mkdir ./app/tmp
   - chmod -R 777 ./app/tmp
-  - chmod -777 ./app/Console/cake*
+  - chmod 777 ./app/Console/cake*
   - echo "<?php
     class DATABASE_CONFIG {
     public \$default = array(
