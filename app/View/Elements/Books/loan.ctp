@@ -40,7 +40,7 @@
             <thead>
                 <tr>
                     <th><?php echo $this->Paginator->sort('title', 'Book'); ?></th>
-                    <th><?php echo $this->Paginator->sort('type', 'Types'); ?></th>
+                    <th><?php echo $this->Paginator->sort('type'); ?></th>
                     <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>
             </thead>
@@ -51,7 +51,7 @@
             <?php echo $this->Html->link($book['Book']['title'], array('controller' => 'books', 'action' => 'view', $book['Book']['id'])); ?>
         </td>
         <td>
-            <?php echo $this->Html->link($book['Types']['type'], array('controller' => 'types', 'action' => 'view', $book['Types']['id'])); ?>
+            <?php echo $this->Html->link($book['Type']['type'], array('controller' => 'types', 'action' => 'view', $book['Type']['id'])); ?>
         </td>
         <td>        
             <?php echo $this->Form->create(null, array('role' => 'form')); ?>

@@ -111,58 +111,30 @@ class Book extends AppModel {
 	);
 
     public function orConditions($data = array()) {
-        if (isset($data['find'])) {
-            $filter = $data['find'];
-            $cond = array(
+        if (!isset($data['find']) || empty($data['find'])) {
+            return false;
+        }
+        $filter = $data['find'];
+
+        $this->Isbn->Behaviors->attach('Search.Searchable');
+        $subQuery = $this->Isbn->getQuery('all', array(
+            'conditions' => array(
                 'OR' => array(
-                    'Book.title LIKE ' => '%' . $filter . '%',
-                    'Isbn.isbn10 LIKE' => '%' . $filter . '%',
-                    'Isbn.isbn13 LIKE' => '%' . $filter . '%',
-                    'Types.type LIKE' => '%' . $filter . '%',
-                ),
-            );
-            return $cond;
-        }
-        return false;
+                    'Isbn.isbn10 LIKE ?' => '%' . $filter . '%',
+                    'Isbn.isbn13 LIKE ?' => '%' . $filter . '%',
+                ),),
+            'fields' => array('Isbn.book_id'),
+            )
+        );
+    
+        $cond = array(
+            'OR' => array(
+                'Type.type LIKE ?' => '%' . $filter . '%',
+                'Book.title LIKE ?' => '%' . $filter . '%',
+                'Book.id in ('. $subQuery .')', // as array it gets quotation marks and don't work
+            ),
+        );
+        return $cond;
     }
-
-/**
- * Find Book's Isbns
- */
-    protected function _findBookIsbns($state, $query, $results = array()) {
-        if ($state === 'before') {
-            $fields = array('Book.id', 'Book.title', 'Types.id', 'Types.type');
-            $joins = array(
-                array(
-                    'table' => 'isbns',
-                    'alias' => 'Isbn',
-                    'type' => 'right',
-                    'conditions' => array('Isbn.book_id = Book.id'),
-                ),
-                array(
-                    'table' => 'types',
-                    'alias' => 'Types',
-                    'type' => 'left',
-                    'conditions' => array('Book.type_id = Types.id'),
-                ),
-            );
-
-            // merge, can't merge with empty arrays
-            if (count($query['fields'])) {
-                $query['fields'] = am($query['fields'], $fields);
-            } else {
-                $query['fields'] = $fields;
-            }
-
-            if (count($query['joins'])) {
-                $query['joins'] = am($query['joins'], $joins);
-            } else {
-                $query['joins'] = $joins;
-            }
-
-            return $query;
-        }
-        return $results;
-    } 
  
 }
