@@ -35,7 +35,7 @@ class BooksController extends AppController {
  * @var array
  */    
     public $components = array(
-    	'RequestHandler', 
+        'RequestHandler', 
     	'Search.Prg' => array(
 	        //Options for preset form method
 	        'presetForm' => array(
@@ -163,16 +163,14 @@ class BooksController extends AppController {
         if (empty($this->request->params['requested']) && !$this->request->is('ajax')) {
             throw new MethodNotAllowedException();
         }
+
+        $this->Book->recursive = 0;
         $this->Prg->commonProcess('Book');
         $searchConditions = array(
-            'findType' => 'bookIsbns',
             'conditions' => $this->Book->parseCriteria($this->Prg->parsedParams()),
         );
-        $this->Paginator->settings = am($this->paginate, $searchConditions);
-        $this->Book->virtualFields = array(
-             'type' => 'type',
-         );
-        
+        $this->paginate = am($this->paginate, $searchConditions);
+
         //requested action
         if (!$this->request->is('ajax')) {
             return array('books' => $this->paginate(), 'paging' => $this->params['paging']);

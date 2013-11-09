@@ -36,7 +36,7 @@ class LoansController extends AppController {
  */
 	public function devolution() {
 		$this->Loan->recursive = 0;
-		$this->Paginator->settings = am($this->paginate, array('findType' => 'currentLoans'));
+		$this->settings = am($this->paginate, array('findType' => 'currentLoans'));
 		$this->set('loans', $this->paginate());
 	}
 

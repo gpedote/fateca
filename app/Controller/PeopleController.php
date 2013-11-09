@@ -36,6 +36,7 @@ class PeopleController extends AppController {
  */    
     public $components = array(
     	'RequestHandler', 
+
     	'Search.Prg' => array(
 	        'presetForm' => array(
 	            'paramType' => 'named',
@@ -67,7 +68,7 @@ class PeopleController extends AppController {
             $searchConditions = array(
                     'conditions' => $this->Person->parseCriteria($this->Prg->parsedParams())
             );
-            $this->Paginator->settings = am($this->paginate, $searchConditions);
+            $this->paginate = am($this->paginate, $searchConditions);
             $this->set('people', $this->paginate());
             $this->render('index', 'ajax');
         }
@@ -218,7 +219,7 @@ class PeopleController extends AppController {
             'findType' => 'loansNumber',
             'conditions' => $this->Person->parseCriteria($this->Prg->parsedParams()),
         );
-        $this->Paginator->settings = am($this->paginate, $searchConditions);
+        $this->paginate = am($this->paginate, $searchConditions);
 
         $this->Person->virtualFields = array(
              'loans' => 'loans',

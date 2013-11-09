@@ -37,6 +37,7 @@ class AppController extends Controller {
 
     public $components = array(
         'Acl',
+        'Session',
         'Auth' => array(
             'authorize' => array(
                 'Actions' => array(
@@ -63,13 +64,11 @@ class AppController extends Controller {
                                 'fields' => array('username' => 'username', 'password' => 'password')),
             ),
         ),
-        'Session',
-        'Paginator',
     );
     
     public $helpers = array('Html', 'Form', 'Session');
 
-    public $paginate = array('limit' => 10);
+    public $paginate = array();
 
 /**
  * beforeRender method
@@ -90,6 +89,9 @@ class AppController extends Controller {
  */
     public function beforeFilter() {
         parent::beforeFilter();
+
+        $this->paginate = array('limit' => 10);
+
         // Disable cake for secure logout
         if ($this->action === 'logout') {
             $this->response->disableCache();
