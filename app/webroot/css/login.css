@@ -1,18 +1,14 @@
-body {
-  background: #474747 url(./../img/bg.png);
-}
-
 h2 {
   font: 70px Tahoma, Helvetica, Arial, Sans-Serif;
   letter-spacing: -5px; 
   text-align: center;
-  color: #999;
-  text-shadow: 0px 5px 8px #2a2a2a;
+  color: #485b66;
+  text-shadow: 0px 5px 8px #485b66;
 }
 
 h2:hover {
-  color: #a0a0a0;
-  text-shadow: 0px 5px 8px #2a2a2a;
+  color: #546a77;
+  text-shadow: 0px 5px 8px #546a77;
 }
 
 .form-signin {
