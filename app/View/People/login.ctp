@@ -21,6 +21,7 @@
             'div' => false,
             'class' => 'form-control',
             'label' => false,
+            'value' => '',
             'placeholder' => __('Password'),
         )
     );
