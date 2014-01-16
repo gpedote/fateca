@@ -4,3 +4,6 @@
 [submodule "plugins/Search"]
 	path = plugins/Search
 	url = https://github.com/CakeDC/search.git
+[submodule "plugins/Authenticate"]
+	path = plugins/Authenticate
+	url = git://github.com/FriendsOfCake/Authenticate.git

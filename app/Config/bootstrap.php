@@ -74,6 +74,7 @@ Cache::config('default', array('engine' => 'File'));
 
 CakePlugin::load('Search');
 CakePlugin::load('AclExtras');
+CakePlugin::load('Authenticate');
 
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter . By Default CakePHP bundles two filters:

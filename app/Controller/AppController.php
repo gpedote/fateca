@@ -60,8 +60,15 @@ class AppController extends Controller {
             ),
             'authError' => 'You can\'t access this page',
             'authenticate' => array(
-                'Form' => array('userModel' => 'Person', 
-                                'fields' => array('username' => 'username', 'password' => 'password')),
+                'Authenticate.MultiColumn' => array(
+                    'fields' => array(
+                        'username' => 'username',
+                        'password' => 'password'
+                    ),
+                    'columns' => array('username'),
+                    'userModel' => 'Person', 
+                    //'scope' => array('User.active' => 1)
+                )
             ),
         ),
     );

@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS subitems (
     item_id INT(11) NOT NULL, 
     type_id INT(11) NOT NULL, 
     barcode VARCHAR(255) DEFAULT NULL, 
+    state INT(11) DEFAULT 1, /* indicates the state of the subitem */
     created DATETIME, 
     modified DATETIME 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -182,9 +183,9 @@ CREATE TABLE IF NOT EXISTS loans_subitems (
     loan_id INT(11) NOT NULL, 
     subitem_id INT(11) NOT NULL, 
     fine NUMERIC(10, 2) DEFAULT  NULL, 
-    payed NUMERIC(10, 2) DEFAULT NULL, 
     expected DATETIME DEFAULT NULL, /* expected return date based on person sysgroup rule */
-    returned DATETIME DEFAULT NULL, 
+    payed NUMERIC(10, 2) DEFAULT NULL, 
+    received DATETIME DEFAULT NULL, 
     created DATETIME, 
     modified DATETIME 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
