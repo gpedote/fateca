@@ -7,3 +7,6 @@
 [submodule "plugins/Authenticate"]
 	path = plugins/Authenticate
 	url = git://github.com/FriendsOfCake/Authenticate.git
+[submodule "chef"]
+	path = chef
+	url = https://github.com/gpedote/chef-repo
