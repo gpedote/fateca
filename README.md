@@ -47,9 +47,10 @@ If you are unable to fix the issue, create a ticket and we'll see what happens f
 * [MarkStory AclExtras plugin](https://github.com/markstory/acl_extras) - Submodule
 * [CakeStrap Theme](https://github.com/Rhym/cakeStrap) - Integrated on code
 
-### License
-------------------------------------------
+License and Authors
+-------------------
+Author: Gabriel Pedote
 
-MIT License, see [LICENSE.txt](LICENSE.txt)
+[MIT LICENSE](LICENSE.md)
 
 [![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)](http://www.cakephp.org)

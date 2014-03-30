@@ -9,4 +9,4 @@
 	url = git://github.com/FriendsOfCake/Authenticate.git
 [submodule "chef"]
 	path = chef
-	url = https://github.com/gpedote/chef-repo
+	url = https://github.com/gpedote/chef-repo.git
