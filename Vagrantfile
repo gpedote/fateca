@@ -32,9 +32,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision :chef_solo do |chef|
         chef.cookbooks_path = "./chef/cookbooks"
         chef.roles_path = "./chef/roles"
+        #chef.data_bags_path = "./chef/data_bags"
+        chef.environments_path = "./chef/environments"
+        #chef.environment = "production"
         chef.add_role "fateca"
-        #chef.data_bags_path = "../my-recipes/data_bags"
-        #chef.add_recipe "mysql"
     end
 
     # VBox config
