@@ -13,6 +13,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "private_network", ip: "192.168.13.37"
     config.vm.network :forwarded_port, guest: 80, host: 8080
 
+    if Vagrant.has_plugin?("vagrant-cachier")
+        config.cache.scope = :box
+    end
+
+    # Chef Install
+    config.omnibus.chef_version = "11.8.2"
+
+    # Warns to use vagrant-omnibus plugin
+    unless Vagrant.has_plugin?("vagrant-omnibus")
+        puts "--- WARNING ---"
+        puts "Fateca requires the vagrant-omnibus plugin"
+        puts "command  to install: vagrant plugin install vagrant-omnibus"
+        puts "---------------"
+    end
+
     # Enable provisioning with chef solo
     config.vm.provision :chef_solo do |chef|
         chef.cookbooks_path = "./chef/cookbooks"
