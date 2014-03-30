@@ -21,4 +21,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #chef.data_bags_path = "../my-recipes/data_bags"
         #chef.add_recipe "mysql"
     end
+
+    # VBox config
+    config.vm.provider "virtualbox" do |v|
+        v.gui = false
+        v.name = "fateca"
+        v.memory = 1024
+        v.customize ["modifyvm", :id, "--cpuexecutioncap", "80"]
+        v.customize ["modifyvm", :id, "--ioapic", "on"]
+        #v.customize ["modifyvm", :id, "--cpus", "2"] 
+    end
 end
