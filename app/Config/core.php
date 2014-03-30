@@ -377,3 +377,8 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+Cache::config('default', array(
+    'engine' => 'File',
+    'mask' => 0666,
+));
