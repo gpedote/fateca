@@ -1,5 +1,5 @@
 FATECA
-================================
+========
 
 FATECA is a library collection manager build uppon [CakePHP](http://www.cakephp.org) and based on the needs of [Fatec Itapetininga](http://fatecitapetininga.edu.br).
 
@@ -30,11 +30,9 @@ Ensure that you have a connection with your database then go to app folder and e
 
 	./Console/cake schema create
 
-### Contributing
-------------------------------------------
-
-If you would like to contribute, clone the source on GitHub, make your changes and send me a pull request.
-If you are unable to fix the issue, create a ticket and we'll see what happens from there.
+Contributing
+--------------
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ### Requirements
 ------------------------------------------
