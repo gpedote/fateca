@@ -9,7 +9,7 @@
 	url = git://github.com/FriendsOfCake/Authenticate.git
 [submodule "chef"]
 	path = chef
-	url = https://github.com/gpedote/chef-repo.git
+	url = https://github.com/gpedote/fateca-chef.git
 [submodule "plugins/Mongodb"]
 	path = plugins/Mongodb
 	url = https://github.com/ichikaway/cakephp-mongodb.git
