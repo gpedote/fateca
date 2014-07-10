@@ -1,20 +1,32 @@
 Installation
---------------
+==============
 
-**Step 1**
+There are two ways of setting up the dev environment.
 
-    git clone --recursive https://github.com/gpedote/fateca.git
+Automated Process
+-------------------
 
-**Step 2**
+This way is prefered because it will easily provide a common dev environment. Automatically creating a VM machine for you and configuring everything.
 
-    git submodule update --init
+First of all, make sure you have installed the [REQUIREMENTS.md](REQUIREMENTS.md) on your PC, then you should clone the repository via git in your computer or [download it](https://github.com/gpedote/fateca/archive/master.zip).
 
-**Step 3**
+Then via prompt or shell:
+```
+vagrant plugin install vagrant-omnibus
+```
+Later:
+```
+vagrant up
+```
+Just wait until the whole process is over. Then fire up your favorite browser and access: [http://localhost:8080](http://localhost:8080)
 
-Follow [Cake Installation](http://book.cakephp.org/2.0/en/installation.html) steps.
+For more information about the configuration visit: [Fateca Chef Repo](https://www.github.com/gpedote/fateca-chef)
 
-**Step 4**
+By Yourself
+-------------
 
-Ensure that you have a connection with your database then go to app folder and execute:
+In this way your alone, if you have concerns or doubts e-mail me at gabriel.pedote@fatec.sp.gov.br.
 
-    ./Console/cake schema create
+Although you may find some help here: [Cake Installation](http://book.cakephp.org/2.0/en/installation.html)
+
+Also take a look in: [REQUIREMENTS.md](REQUIREMENTS.md)
