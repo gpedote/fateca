@@ -1,6 +1,8 @@
 FATECA
 ========
 
+###Current Version: 0.1.0
+
 FATECA is a library collection manager built uppon [CakePHP](http://www.cakephp.org) and based on the needs of [Fatec Itapetininga](http://fatecitapetininga.edu.br).
 
 **Still in development**
